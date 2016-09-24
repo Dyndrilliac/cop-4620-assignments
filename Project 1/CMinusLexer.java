@@ -42,15 +42,19 @@ public class CMinusLexer<T>
         }
     }
 
-    public static final String COMMENTS    = "(\\/\\/)|(\\/\\*)|(\\*\\/)";
-    public static final String GROUPINGS   = "([\\(\\)\\{\\}\\[\\],;])";
+    // Regular Expressions describing the various components of the C-Minus grammar.
+    public static final String COMMENTS    = "((\\/\\/)|(\\/\\*)|(\\*\\/))";
+    public static final String GROUPINGS   = "(([\\(\\)\\{\\}\\[\\]])|(,)|(;))";
     public static final String KEYWORDS    = "((else)|(float)|(if)|(int)|(return)|(void)|(while))";
-    public static final String IDENTIFIERS = "\\b(([a-zA-Z])+\\d*)";
+    public static final String IDENTIFIERS = "(\\b([a-zA-Z])+\\d*)";
     public static final String NUMBERS     = "(((\\-)?\\d+(\\.\\d+)?((E|e)(\\+|\\-)?\\d+)?)|((\\-)?\\.\\d+((E|e)(\\+|\\-)?\\d+)?))";
-    public static final String OPERATORS   = "(\\<\\=)|(\\>\\=)|(\\=\\=)|(\\!\\=)|([\\+\\-\\*\\/\\<\\>\\=])";
-    public static final String CATCHALLS   = "\\S+";
+    public static final String OPERATORS   = "((\\<\\=)|(\\>\\=)|(\\=\\=)|(\\!\\=)|([\\+\\-\\*\\/\\<\\>\\=]))";
+    public static final String CATCHALLS   = "([^,;\\+\\-\\*\\/\\>\\<\\=\\(\\)\\{\\}\\[\\]\\s])+";
 
     private int commentDepth = -1;
+    private int parenthDepth = -1;
+    private int bracketDepth = -1;
+    private int braceDepth   = -1;
 
     public ArrayList<Token<T>> lexFile(final String fileName)
     {
@@ -60,7 +64,8 @@ public class CMinusLexer<T>
         // Try to read from the given file.
         try (Stream<String> stream = Files.lines(Paths.get(fileName)))
         {
-            stream.forEach(e -> tokens.addAll(this.lex(e)));
+        	// Pass each line of text from the file to lex(), and add all the returned tokens to our output token buffer.
+            stream.forEach(s -> tokens.addAll(this.lex(s)));
         }
         catch (final IOException e)
         {
@@ -76,6 +81,7 @@ public class CMinusLexer<T>
         // Strip out whitespace.
         String input = s.replaceAll("\\s+", " ").trim();
 
+        // Skip empty lines.
         if (input.isEmpty())
         {
             return new ArrayList<Token<T>>();
@@ -97,7 +103,7 @@ public class CMinusLexer<T>
 
         Pattern tokenPatterns = Pattern.compile(new String(tokenPatternsBuffer.substring(1)));
 
-        // Begin matching tokens.
+        // Begin matching tokens using the RegExr patterns.
         Matcher matcher = tokenPatterns.matcher(input);
 
         while (matcher.find())
@@ -150,6 +156,9 @@ public class CMinusLexer<T>
                     token = new Token<T>((T) TokenType.GROUPING, matcher.group(TokenType.GROUPING.name()));
                     tokens.add(token);
                     System.out.println(token);
+                    
+                    // TODO: Implement depth counters for parentheses, square brackets, and curly braces.
+                    
                     continue;
                 }
                 else if (matcher.group(TokenType.KEYWORD.name()) != null)
@@ -164,6 +173,9 @@ public class CMinusLexer<T>
                     token = new Token<T>((T) TokenType.IDENTIFIER, matcher.group(TokenType.IDENTIFIER.name()));
                     tokens.add(token);
                     System.out.println(token);
+                    
+                    // TODO: Add identifiers to the symbol table.
+                    
                     continue;
                 }
                 else if (matcher.group(TokenType.NUMBER.name()) != null)
@@ -183,7 +195,7 @@ public class CMinusLexer<T>
                 else if (matcher.group(TokenType.CATCHALL.name()) != null)
                 {
                     token = new Token<T>((T) TokenType.CATCHALL, matcher.group(TokenType.CATCHALL.name()));
-                    System.out.println("ERROR: " + token.getData() + " (LEXICAL_INVALID_TOKEN)");
+                    System.err.println("ERROR: " + token.getData() + " (LEXICAL_INVALID_TOKEN)");
                     continue;
                 }
             }
