@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 public class CMinusLexer<T>
 {
@@ -59,10 +58,10 @@ public class CMinusLexer<T>
 
     public ArrayList<Token<T>> lexFile(final String fileName)
     {
-        // The return buffer for the tokens.
+        // A buffer for the tokens we want to return.
         ArrayList<Token<T>> tokens = new ArrayList<Token<T>>();
 
-        // A buffer to hold the current line of text in the file.
+        // A buffer
         String textBuffer = "";
 
         try
@@ -75,14 +74,15 @@ public class CMinusLexer<T>
             {
                 tokens.addAll(this.lex(textBuffer));
             }
-        }
-        catch (final IOException ioe)
-        {
-            ioe.printStackTrace();
+            br.close();
         }
         catch (final FileNotFoundException fnfe)
         {
             fnfe.printStackTrace();
+        }
+        catch (final IOException ioe)
+        {
+            ioe.printStackTrace();
         }
 
         return tokens;
@@ -91,7 +91,7 @@ public class CMinusLexer<T>
     @SuppressWarnings("unchecked")
     public ArrayList<Token<T>> lex(final String s)
     {
-        // Strip out whitespace.
+        // Strip out unnecessary whitespace.
         String input = s.replaceAll("\\s+", " ").trim();
 
         // Skip empty lines.
@@ -101,9 +101,11 @@ public class CMinusLexer<T>
         }
 
         // Echo input.
+        System.out.flush();
+        System.err.flush();
         System.out.println("INPUT: " + s);
 
-        // The tokens to return.
+        // A buffer for the tokens we want to return.
         ArrayList<Token<T>> tokens = new ArrayList<Token<T>>();
 
         // Lexer logic begins here.
@@ -236,7 +238,6 @@ public class CMinusLexer<T>
                 else if (matcher.group(TokenType.CATCHALL.name()) != null)
                 {
                     token = new Token<T>((T) TokenType.CATCHALL, matcher.group(TokenType.CATCHALL.name()), this.braceDepth, this.bracketDepth, this.parenthDepth);
-                    System.out.flush();
                     System.err.println("ERROR: " + token.getData() + " (LEXICAL_INVALID_TOKEN)");
                     continue;
                 }
