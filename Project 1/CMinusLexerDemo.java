@@ -10,11 +10,10 @@ import java.util.ArrayList;
 
 public class CMinusLexerDemo
 {
-	@SuppressWarnings("unused")
 	public static void main(String[] args)
 	{
 		// Read in file names given as command-line arguments.
-        if (args.length > 0)
+		if (args.length > 0)
         {
             for (int i = 0; i < args.length; i++)
             {
