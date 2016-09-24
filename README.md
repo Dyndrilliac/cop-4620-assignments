@@ -8,4 +8,22 @@
 
 *******************************************************************
 
+#Project 1 - Lexical Analyzer
+
+The goal of this project is to produce a list of tokens to pass to the parser (Syntax Analyzer) in Project 2.
+
+#Project 2 - Syntax Analyzer
+
+TODO
+
+#Project 3 - Semantic Analyzer
+
+TODO
+
+#Project 4 - Code Generation
+
+TODO
+
+#Project 5 - YACC/Lex
+
 TODO
