@@ -64,7 +64,7 @@ public class CMinusLexer<T>
         // Try to read from the given file.
         try (Stream<String> stream = Files.lines(Paths.get(fileName)))
         {
-        	// Pass each line of text from the file to lex(), and add all the returned tokens to our output token buffer.
+            // Pass each line of text from the file to lex(), and add all the returned tokens to our output token buffer.
             stream.forEach(s -> tokens.addAll(this.lex(s)));
         }
         catch (final IOException e)
@@ -195,6 +195,7 @@ public class CMinusLexer<T>
                 else if (matcher.group(TokenType.CATCHALL.name()) != null)
                 {
                     token = new Token<T>((T) TokenType.CATCHALL, matcher.group(TokenType.CATCHALL.name()));
+                    System.out.flush();
                     System.err.println("ERROR: " + token.getData() + " (LEXICAL_INVALID_TOKEN)");
                     continue;
                 }
