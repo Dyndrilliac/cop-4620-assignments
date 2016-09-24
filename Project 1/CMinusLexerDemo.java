@@ -18,6 +18,7 @@ public class CMinusLexerDemo
         {
             for (int i = 0; i < args.length; i++)
             {
+                CMinusLexer<CMinusLexer.TokenType>      lexer  = new CMinusLexer<CMinusLexer.TokenType>();
                 ArrayList<Token<CMinusLexer.TokenType>> tokens = new ArrayList<Token<CMinusLexer.TokenType>>();
 
                 tokens = lexer.lexFile(args[i]);
