@@ -69,6 +69,7 @@ public class CMinusLexer<T>
         }
         catch (final IOException e)
         {
+        	// Can't read from file due to exception.
             e.printStackTrace();
         }
 
@@ -114,7 +115,7 @@ public class CMinusLexer<T>
             {
                 if (matcher.group(TokenType.COMMENT.name()) != null)
                 {
-                    token = new Token<T>((T) TokenType.COMMENT, matcher.group(TokenType.COMMENT.name()));
+                    token = new Token<T>((T) TokenType.COMMENT, matcher.group(TokenType.COMMENT.name()), this.braceDepth, this.bracketDepth, this.parenthDepth);
 
                     if (token.getData().contentEquals("/*"))
                     {
@@ -132,7 +133,7 @@ public class CMinusLexer<T>
             {
                 if (matcher.group(TokenType.COMMENT.name()) != null)
                 {
-                    token = new Token<T>((T) TokenType.COMMENT, matcher.group(TokenType.COMMENT.name()));
+                    token = new Token<T>((T) TokenType.COMMENT, matcher.group(TokenType.COMMENT.name()), this.braceDepth, this.bracketDepth, this.parenthDepth);
 
                     if (token.getData().contentEquals("/*"))
                     {
@@ -140,11 +141,11 @@ public class CMinusLexer<T>
                     }
                     else if (token.getData().contentEquals("*/"))
                     {
-                        Token<T> new_tok1 = new Token<T>((T) TokenType.OPERATOR, "*");
+                        Token<T> new_tok1 = new Token<T>((T) TokenType.OPERATOR, "*", this.braceDepth, this.bracketDepth, this.parenthDepth);
                         tokens.add(new_tok1);
                         System.out.println(new_tok1);
 
-                        Token<T> new_tok2 = new Token<T>((T) TokenType.OPERATOR, "/");
+                        Token<T> new_tok2 = new Token<T>((T) TokenType.OPERATOR, "/", this.braceDepth, this.bracketDepth, this.parenthDepth);
                         tokens.add(new_tok2);
                         System.out.println(new_tok2);
                     }
@@ -153,48 +154,76 @@ public class CMinusLexer<T>
                 }
                 else if (matcher.group(TokenType.GROUPING.name()) != null)
                 {
-                    token = new Token<T>((T) TokenType.GROUPING, matcher.group(TokenType.GROUPING.name()));
+                    token = new Token<T>((T) TokenType.GROUPING, matcher.group(TokenType.GROUPING.name()), this.braceDepth, this.bracketDepth, this.parenthDepth);
                     tokens.add(token);
                     System.out.println(token);
-                    
-                    // TODO: Implement depth counters for parentheses, square brackets, and curly braces.
-                    
+
+                    switch (token.getData())
+                    {
+	                    case "(":
+	                		this.parenthDepth++;
+	                		break;
+
+	                	case ")":
+	                		this.parenthDepth--;
+	                		break;
+
+	                    case "[":
+	                		this.bracketDepth++;
+	                		break;
+
+	                	case "]":
+	                		this.bracketDepth--;
+	                		break;
+
+                    	case "{":
+                    		this.braceDepth++;
+                    		break;
+
+                    	case "}":
+                    		this.braceDepth--;
+                    		break;
+
+                    	default:
+                    		break;
+                    }
+
                     continue;
                 }
                 else if (matcher.group(TokenType.KEYWORD.name()) != null)
                 {
-                    token = new Token<T>((T) TokenType.KEYWORD, matcher.group(TokenType.KEYWORD.name()));
+                    token = new Token<T>((T) TokenType.KEYWORD, matcher.group(TokenType.KEYWORD.name()), this.braceDepth, this.bracketDepth, this.parenthDepth);
                     tokens.add(token);
                     System.out.println(token);
                     continue;
                 }
                 else if (matcher.group(TokenType.IDENTIFIER.name()) != null)
                 {
-                    token = new Token<T>((T) TokenType.IDENTIFIER, matcher.group(TokenType.IDENTIFIER.name()));
+                    token = new Token<T>((T) TokenType.IDENTIFIER, matcher.group(TokenType.IDENTIFIER.name()), this.braceDepth, this.bracketDepth, this.parenthDepth);
                     tokens.add(token);
                     System.out.println(token);
-                    
+
                     // TODO: Add identifiers to the symbol table.
-                    
+
                     continue;
                 }
                 else if (matcher.group(TokenType.NUMBER.name()) != null)
                 {
-                    token = new Token<T>((T) TokenType.NUMBER, matcher.group(TokenType.NUMBER.name()));
+                    token = new Token<T>((T) TokenType.NUMBER, matcher.group(TokenType.NUMBER.name()), this.braceDepth, this.bracketDepth, this.parenthDepth);
                     tokens.add(token);
                     System.out.println(token);
                     continue;
                 }
                 else if (matcher.group(TokenType.OPERATOR.name()) != null)
                 {
-                    token = new Token<T>((T) TokenType.OPERATOR, matcher.group(TokenType.OPERATOR.name()));
+                    token = new Token<T>((T) TokenType.OPERATOR, matcher.group(TokenType.OPERATOR.name()), this.braceDepth, this.bracketDepth, this.parenthDepth);
                     tokens.add(token);
                     System.out.println(token);
                     continue;
                 }
                 else if (matcher.group(TokenType.CATCHALL.name()) != null)
                 {
-                    token = new Token<T>((T) TokenType.CATCHALL, matcher.group(TokenType.CATCHALL.name()));
+                    token = new Token<T>((T) TokenType.CATCHALL, matcher.group(TokenType.CATCHALL.name()), this.braceDepth, this.bracketDepth, this.parenthDepth);
                     System.out.flush();
                     System.err.println("ERROR: " + token.getData() + " (LEXICAL_INVALID_TOKEN)");
                     continue;
