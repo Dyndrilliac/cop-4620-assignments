@@ -6,9 +6,10 @@
  * This class operates as a lexical analyzer for the C-Minus language.
  */
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -58,19 +59,30 @@ public class CMinusLexer<T>
 
     public ArrayList<Token<T>> lexFile(final String fileName)
     {
-        // The tokens to return.
+        // The return buffer for the tokens.
         ArrayList<Token<T>> tokens = new ArrayList<Token<T>>();
 
-        // Try to read from the given file.
-        try (Stream<String> stream = Files.lines(Paths.get(fileName)))
+        // A buffer to hold the current line of text in the file.
+        String textBuffer = "";
+
+        try
         {
+            // Try to open the given file for a read operation.
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+
             // Pass each line of text from the file to lex(), and add all the returned tokens to our output token buffer.
-            stream.forEach(s -> tokens.addAll(this.lex(s)));
+            while((textBuffer = br.readLine()) != null)
+            {
+                tokens.addAll(this.lex(textBuffer));
+            }
         }
-        catch (final IOException e)
+        catch (final IOException ioe)
         {
-            // Can't read from file due to exception.
-            e.printStackTrace();
+            ioe.printStackTrace();
+        }
+        catch (final FileNotFoundException fnfe)
+        {
+            fnfe.printStackTrace();
         }
 
         return tokens;
