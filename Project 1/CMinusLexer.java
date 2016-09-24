@@ -74,6 +74,7 @@ public class CMinusLexer<T>
             {
                 tokens.addAll(this.lex(textBuffer));
             }
+
             br.close();
         }
         catch (final FileNotFoundException fnfe)
