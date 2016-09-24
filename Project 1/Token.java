@@ -33,24 +33,24 @@ public class Token<T>
     }
 
     public final int getBraceDepth()
-	{
-		return braceDepth;
-	}
+    {
+        return braceDepth;
+    }
 
-	public final int getBracketDepth()
-	{
-		return bracketDepth;
-	}
+    public final int getBracketDepth()
+    {
+        return bracketDepth;
+    }
 
-	public final String getData()
+    public final String getData()
     {
         return this.data;
     }
 
-	public final int getParenthDepth()
-	{
-		return parenthDepth;
-	}
+    public final int getParenthDepth()
+    {
+        return parenthDepth;
+    }
 
     public final T getType()
     {
@@ -59,23 +59,23 @@ public class Token<T>
 
     protected final void setBraceDepth(final int braceDepth)
     {
-		this.braceDepth = braceDepth;
-	}
+        this.braceDepth = braceDepth;
+    }
 
     protected final void setBracketDepth(final int bracketDepth)
-	{
-		this.bracketDepth = bracketDepth;
-	}
+    {
+        this.bracketDepth = bracketDepth;
+    }
 
-	protected final void setData(final String data)
+    protected final void setData(final String data)
     {
         this.data = data;
     }
 
-	protected final void setParenthDepth(final int parenthDepth)
-	{
-		this.parenthDepth = parenthDepth;
-	}
+    protected final void setParenthDepth(final int parenthDepth)
+    {
+        this.parenthDepth = parenthDepth;
+    }
 
     protected final void setType(final T type)
     {

@@ -69,7 +69,7 @@ public class CMinusLexer<T>
         }
         catch (final IOException e)
         {
-        	// Can't read from file due to exception.
+            // Can't read from file due to exception.
             e.printStackTrace();
         }
 
@@ -160,32 +160,32 @@ public class CMinusLexer<T>
 
                     switch (token.getData())
                     {
-	                    case "(":
-	                		this.parenthDepth++;
-	                		break;
+                        case "(":
+                            this.parenthDepth++;
+                            break;
 
-	                	case ")":
-	                		this.parenthDepth--;
-	                		break;
+                        case ")":
+                            this.parenthDepth--;
+                            break;
 
-	                    case "[":
-	                		this.bracketDepth++;
-	                		break;
+                        case "[":
+                            this.bracketDepth++;
+                            break;
 
-	                	case "]":
-	                		this.bracketDepth--;
-	                		break;
+                        case "]":
+                            this.bracketDepth--;
+                            break;
 
-                    	case "{":
-                    		this.braceDepth++;
-                    		break;
+                        case "{":
+                            this.braceDepth++;
+                            break;
 
-                    	case "}":
-                    		this.braceDepth--;
-                    		break;
+                        case "}":
+                            this.braceDepth--;
+                            break;
 
-                    	default:
-                    		break;
+                        default:
+                            break;
                     }
 
                     continue;
