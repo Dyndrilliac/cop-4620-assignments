@@ -14,16 +14,16 @@ The goal of this project is to produce a list of tokens to pass to the parser (S
 
 #Project 2 - Syntax Analyzer
 
-TODO
+
 
 #Project 3 - Semantic Analyzer
 
-TODO
+
 
 #Project 4 - Code Generation
 
-TODO
+
 
 #Project 5 - YACC/Lex
 
-TODO
+
