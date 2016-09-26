@@ -27,7 +27,9 @@ public class CMinusLexer<T> extends Lexer<T>
         GROUPING(CMinusLexer.C_GROUPINGS),
         KEYWORD(CMinusLexer.C_KEYWORDS),
         IDENTIFIER(CMinusLexer.C_IDENTIFIERS),
-        NUMBER(Lexer.C_NUMBERS),
+        NUMBER(CMinusLexer.C_NUMBERS),
+        INTEGER(CMinusLexer.C_INTEGERS),
+        FLOAT(CMinusLexer.C_FLOATS),
         OPERATOR(CMinusLexer.C_OPERATORS),
         WHITESPACE(Lexer.C_WHITESPACES),
         ERROR(CMinusLexer.C_ERRORS);
@@ -54,23 +56,27 @@ public class CMinusLexer<T> extends Lexer<T>
 
     // RegExr patterns describing the various components of the C-Minus language grammar.
     public static final String C_ERRORS      = "([^\\(\\)\\{\\}\\[\\]\\+\\-\\*\\/\\<\\>\\=,;\\s]+)";
+    public static final String C_FLOATS      = "([^\\s\\S])";
     public static final String C_GROUPINGS   = "([\\(\\)\\{\\}\\[\\],;])";
     public static final String C_IDENTIFIERS = "([A-Za-z])([A-Za-z0-9]*)";
-    public static final String C_KEYWORDS    = "(else)|(float)|(if)|(int)|(return)|(void)|(while)";
+    public static final String C_INTEGERS    = "([^\\s\\S])";
+    public static final String C_KEYWORDS    = "(\\b((else)|(float)|(if)|(int)|(return)|(void)|(while))\\b)";
+    public static final String C_NUMBERS     = "((\\-)?\\d+(\\.\\d+)?((E|e)(\\+|\\-)?\\d+)?)";
     public static final String C_OPERATORS   = "(\\<\\=)|(\\>\\=)|(\\=\\=)|(\\!\\=)|([\\+\\-\\*\\/\\<\\>\\=])";
 
     public static void main(final String[] args)
     {
         // It comes with a limited test bed program so you can lex arbitrary input quickly.
-        StdOut.println("RegEx Grammars:");
-        StdOut.println("COMMENTS:\t" + Lexer.C_COMMENTS);
-        StdOut.println("GROUPINGS:\t" + CMinusLexer.C_GROUPINGS);
-        StdOut.println("KEYWORDS:\t" + CMinusLexer.C_KEYWORDS);
+        StdOut.println("RegExr Grammars:");
+        StdOut.println("COMMENTS   :\t" + Lexer.C_COMMENTS);
+        StdOut.println("GROUPINGS  :\t" + CMinusLexer.C_GROUPINGS);
+        StdOut.println("KEYWORDS   :\t" + CMinusLexer.C_KEYWORDS);
         StdOut.println("IDENTIFIERS:\t" + CMinusLexer.C_IDENTIFIERS);
-        StdOut.println("NUMBERS:\t" + Lexer.C_NUMBERS);
-        StdOut.println("OPERATORS:\t" + CMinusLexer.C_OPERATORS);
+        StdOut.println("INTEGERS   :\t" + CMinusLexer.C_NUMBERS);
+        StdOut.println("FLOATS     :\t" + CMinusLexer.C_NUMBERS);
+        StdOut.println("OPERATORS  :\t" + CMinusLexer.C_OPERATORS);
         StdOut.println("WHITESPACES:\t" + Lexer.C_WHITESPACES);
-        StdOut.println("ERRORS:\t" + CMinusLexer.C_ERRORS);
+        StdOut.println("ERRORS     :\t" + CMinusLexer.C_ERRORS);
 
         String input = Support.getInputString(null, "Please provide an expression.", "Expression Lexer Input");
 
@@ -208,7 +214,18 @@ public class CMinusLexer<T> extends Lexer<T>
                 }
                 else if ( matcher.group(TokenType.NUMBER.name()) != null )
                 {
-                    token = new Token<T>((T) TokenType.NUMBER, matcher.group(TokenType.NUMBER.name()), this.Depth[DepthType.BRACE.ordinal()], this.Depth[DepthType.BRACKET.ordinal()], this.Depth[DepthType.PARENTH.ordinal()]);
+                    if ( Support.isStringParsedAsInteger(matcher.group(TokenType.NUMBER.name())) )
+                    {
+                        token = new Token<T>((T) TokenType.INTEGER, matcher.group(TokenType.NUMBER.name()), this.Depth[DepthType.BRACE.ordinal()], this.Depth[DepthType.BRACKET.ordinal()], this.Depth[DepthType.PARENTH.ordinal()]);
+                    }
+                    else if ( Support.isStringParsedAsDouble(matcher.group(TokenType.NUMBER.name())) )
+                    {
+                        token = new Token<T>((T) TokenType.FLOAT, matcher.group(TokenType.NUMBER.name()), this.Depth[DepthType.BRACE.ordinal()], this.Depth[DepthType.BRACKET.ordinal()], this.Depth[DepthType.PARENTH.ordinal()]);
+                    }
+                    else
+                    {
+                        token = new Token<T>((T) TokenType.NUMBER, matcher.group(TokenType.NUMBER.name()), this.Depth[DepthType.BRACE.ordinal()], this.Depth[DepthType.BRACKET.ordinal()], this.Depth[DepthType.PARENTH.ordinal()]);
+                    }
                 }
                 else if ( matcher.group(TokenType.OPERATOR.name()) != null )
                 {
