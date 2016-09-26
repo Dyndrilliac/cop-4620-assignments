@@ -1,3 +1,4 @@
+
 /*
  * Title: CMinusLexerDemo
  * Author: Matthew Boyette
@@ -7,20 +8,22 @@
  */
 
 import java.util.ArrayList;
+import api.util.datastructures.Token;
 
 public class CMinusLexerDemo
 {
+    @SuppressWarnings("unused")
     public static void main(String[] args)
     {
         // Read in file names given as command-line arguments.
-        if (args.length > 0)
+        if ( args.length > 0 )
         {
-            for (int i = 0; i < args.length; i++)
+            for ( int i = 0; i < args.length; i++ )
             {
-                CMinusLexer<CMinusLexer.TokenType>      lexer  = new CMinusLexer<CMinusLexer.TokenType>();
+                CMinusLexer<CMinusLexer.TokenType> lexer = new CMinusLexer<CMinusLexer.TokenType>();
                 ArrayList<Token<CMinusLexer.TokenType>> tokens = new ArrayList<Token<CMinusLexer.TokenType>>();
 
-                tokens = lexer.lexFile(args[i]);
+                tokens = lexer.lexFile(args[i], false, true);
 
                 // TODO: Pass the tokens to the parser.
             }
