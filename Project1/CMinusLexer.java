@@ -1,4 +1,3 @@
-
 /*
  * Title: CMinusLexer
  * Author: Matthew Boyette
@@ -97,7 +96,11 @@ public class CMinusLexer<T> extends Lexer<T>
         // Skip empty lines.
         if ( s.isEmpty() )
         {
-            StdOut.println();
+            if ( !silent )
+            {
+                StdOut.println();
+            }
+            
             return new ArrayList<Token<T>>();
         }
 

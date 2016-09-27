@@ -1,4 +1,3 @@
-
 /*
  * Title: CMinusLexerDemo
  * Author: Matthew Boyette
