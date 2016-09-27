@@ -91,7 +91,7 @@ public class CMinusLexer<T> extends Lexer<T>
 
     @Override
     @SuppressWarnings("unchecked")
-    public ArrayList<Token<T>> lex(final String s, final boolean silent, final boolean ignoreWhiteSpace)
+    public ArrayList<Token<T>> lex(final String s, final boolean silent, final boolean ignoreWhiteSpace, final boolean ignoreComments)
     {
         // Skip empty lines.
         if ( s.isEmpty() )
@@ -142,6 +142,11 @@ public class CMinusLexer<T> extends Lexer<T>
                         this.Depth[DepthType.COMMENT.ordinal()]--;
                     }
                 }
+
+                if ( ignoreComments )
+                {
+                    continue;
+                }
             }
             else
             {
@@ -167,9 +172,11 @@ public class CMinusLexer<T> extends Lexer<T>
                             StdOut.println(new_tok2);
                         }
                     }
-                    else if ( token.getData().contentEquals("//") ) { return tokens; }
 
-                    continue;
+                    if ( ignoreComments )
+                    {
+                        continue;
+                    }
                 }
                 else if ( matcher.group(TokenType.GROUPING.name()) != null )
                 {
@@ -247,13 +254,13 @@ public class CMinusLexer<T> extends Lexer<T>
                 {
                     token = new Token<T>((T) TokenType.ERROR, matcher.group(TokenType.ERROR.name()), this.Depth[DepthType.BRACE.ordinal()], this.Depth[DepthType.BRACKET.ordinal()], this.Depth[DepthType.PARENTH.ordinal()]);
                 }
+            }
 
-                tokens.add(token);
+            tokens.add(token);
 
-                if ( !silent )
-                {
-                    StdOut.println(token);
-                }
+            if ( !silent )
+            {
+                StdOut.println(token);
             }
         }
 
