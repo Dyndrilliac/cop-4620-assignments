@@ -6,26 +6,34 @@
  * This is a test program demonstrating a lexical analyzer class for the C-Minus language.
  */
 
-import java.util.ArrayList;
-import api.util.datastructures.Token;
+import api.util.Support;
+import api.util.cminus.CMinusLexer;
+import api.util.cminus.CMinusLexer.TokenType;
 
 public class CMinusLexerDemo
 {
-    @SuppressWarnings("unused")
     public static void main(String[] args)
     {
-        // Read in file names given as command-line arguments.
+        // Allow user to select multiple files sequentially using command-line arguments. Each argument is a separate file name.
         if ( args.length > 0 )
         {
             for ( int i = 0; i < args.length; i++ )
             {
-                CMinusLexer<CMinusLexer.TokenType> lexer = new CMinusLexer<CMinusLexer.TokenType>();
-                ArrayList<Token<CMinusLexer.TokenType>> tokens = new ArrayList<Token<CMinusLexer.TokenType>>();
-
-                tokens = lexer.lexFile(args[i], false, true);
-
-                // TODO: Pass the tokens to the parser.
+                CMinusLexerDemo.run(args[i]);
             }
         }
+        // Allow user to select a file using a GUI.
+        else
+        {
+            String fileName = Support.getFilePath(null, true, false);
+
+            CMinusLexerDemo.run(fileName);
+        }
+    }
+
+    public static void run(final String fileName)
+    {
+        // Perform lexical analysis on a file.
+        ( new CMinusLexer<TokenType>() ).lexFile(fileName, false, true, true);
     }
 }
