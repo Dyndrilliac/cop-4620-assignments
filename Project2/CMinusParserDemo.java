@@ -20,36 +20,41 @@ public class CMinusParserDemo
 {
     public static void main(String[] args)
     {
-        // Allow user to select multiple files sequentially using command-line arguments. Each argument is a separate file name.
-        if ( args.length > 0 )
+        final boolean SILENT = true;
+
+        if ( args.length > 0 ) // Allow user to select multiple files sequentially using command-line arguments. Each argument is a separate file name.
         {
             for ( int i = 0; i < args.length; i++ )
             {
-                CMinusParserDemo.run(args[i]);
+                CMinusParserDemo.run(args[i], SILENT);
             }
         }
-        // Allow user to select a file using a GUI.
-        else
+        else // Allow user to select a file using a GUI.
         {
-            String fileName = Support.getFilePath(null, true, false);
+            String fileName = Support.getFilePath(null, true, !SILENT);
 
-            CMinusParserDemo.run(fileName);
+            CMinusParserDemo.run(fileName, SILENT);
         }
     }
 
-    public static void run(final String fileName)
+    public static void run(final String fileName, final boolean silent)
     {
         // Create an instance of the lexical analyzer.
         CMinusLexer<TokenType> lexer = new CMinusLexer<TokenType>();
 
         // Get the Tokens recognized by the lexer.
-        List<Token<CMinusLexer.TokenType>> tokens = lexer.lexFile(fileName, true, true, true);
+        List<Token<CMinusLexer.TokenType>> tokens = lexer.lexFile(fileName, silent, true, true);
+
+        if ( !silent )
+        {
+            StdOut.println();
+        }
 
         // Create a doubly-linked list of symbol tables.
         List<SeparateChainingSymbolTable<String, CMinusIdentifierParameters>> symbolTables = new LinkedList<SeparateChainingSymbolTable<String, CMinusIdentifierParameters>>();
 
-        // Create an instance of the parser, and pass the tokens and the symbol tables to it.
+        // Create an instance of the parser; pass the tokens and the symbol tables to it.
         @SuppressWarnings("unused")
-        CMinusParser parser = new CMinusParser(tokens, symbolTables);
+        CMinusParser parser = new CMinusParser(tokens, symbolTables, silent);
     }
 }

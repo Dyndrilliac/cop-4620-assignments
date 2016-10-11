@@ -6,34 +6,40 @@
  * This is a test program demonstrating a lexical analyzer class for the C-Minus language.
  */
 
+import java.util.List;
 import api.util.Support;
 import api.util.cminus.CMinusLexer;
 import api.util.cminus.CMinusLexer.TokenType;
+import api.util.datastructures.Token;
 
 public class CMinusLexerDemo
 {
     public static void main(String[] args)
     {
-        // Allow user to select multiple files sequentially using command-line arguments. Each argument is a separate file name.
-        if ( args.length > 0 )
+        final boolean SILENT = false;
+
+        if ( args.length > 0 ) // Allow user to select multiple files sequentially using command-line arguments. Each argument is a separate file name.
         {
             for ( int i = 0; i < args.length; i++ )
             {
-                CMinusLexerDemo.run(args[i]);
+                CMinusLexerDemo.run(args[i], SILENT);
             }
         }
-        // Allow user to select a file using a GUI.
-        else
+        else // Allow user to select a file using a GUI.
         {
-            String fileName = Support.getFilePath(null, true, false);
+            String fileName = Support.getFilePath(null, true, !SILENT);
 
-            CMinusLexerDemo.run(fileName);
+            CMinusLexerDemo.run(fileName, SILENT);
         }
     }
 
-    public static void run(final String fileName)
+    public static void run(final String fileName, final boolean silent)
     {
-        // Perform lexical analysis on a file.
-        ( new CMinusLexer<TokenType>() ).lexFile(fileName, false, true, true);
+        // Create an instance of the lexical analyzer.
+        CMinusLexer<TokenType> lexer = new CMinusLexer<TokenType>();
+
+        // Get the Tokens recognized by the lexer.
+        @SuppressWarnings("unused")
+        List<Token<CMinusLexer.TokenType>> tokens = lexer.lexFile(fileName, silent, true, true);
     }
 }
