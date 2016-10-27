@@ -9,10 +9,9 @@
 import java.util.LinkedList;
 import java.util.List;
 import api.util.Support;
+import api.util.cminus.CMinusIdentifierParameters;
 import api.util.cminus.CMinusLexer;
-import api.util.cminus.CMinusLexer.TokenType;
 import api.util.cminus.CMinusParser;
-import api.util.cminus.CMinusParser.CMinusIdentifierParameters;
 import api.util.datastructures.SeparateChainingSymbolTable;
 import api.util.datastructures.Token;
 
@@ -40,7 +39,7 @@ public class CMinusParserDemo
     public static void run(final String fileName, final boolean silent)
     {
         // Create an instance of the lexical analyzer.
-        CMinusLexer<TokenType> lexer = new CMinusLexer<TokenType>();
+        CMinusLexer<CMinusLexer.TokenType> lexer = new CMinusLexer<CMinusLexer.TokenType>();
 
         // Get the Tokens recognized by the lexer.
         List<Token<CMinusLexer.TokenType>> tokens = lexer.lexFile(fileName, silent, true, true);

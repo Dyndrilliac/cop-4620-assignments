@@ -9,7 +9,6 @@
 import java.util.List;
 import api.util.Support;
 import api.util.cminus.CMinusLexer;
-import api.util.cminus.CMinusLexer.TokenType;
 import api.util.datastructures.Token;
 
 public class CMinusLexerDemo
@@ -36,7 +35,7 @@ public class CMinusLexerDemo
     public static void run(final String fileName, final boolean silent)
     {
         // Create an instance of the lexical analyzer.
-        CMinusLexer<TokenType> lexer = new CMinusLexer<TokenType>();
+        CMinusLexer<CMinusLexer.TokenType> lexer = new CMinusLexer<CMinusLexer.TokenType>();
 
         // Get the Tokens recognized by the lexer.
         @SuppressWarnings("unused")
