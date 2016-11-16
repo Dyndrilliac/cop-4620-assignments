@@ -1,7 +1,7 @@
 /*
  * Title: CMinusParserDemo
  * Author: Matthew Boyette
- * Date: 10/04/2016
+ * Date: 11/08/2016
  * 
  * This is a test program demonstrating a syntactical analyzer class for the C-Minus language.
  */
@@ -10,11 +10,10 @@ import java.util.List;
 import api.util.Support;
 import api.util.cminus.CMinusLexer;
 import api.util.cminus.CMinusParser;
-import api.util.cminus.CMinusSemantics.SymTab;
-import api.util.cminus.CMinusSemantics.SymTabRec;
+import api.util.cminus.CMinusSemantics;
 import api.util.datastructures.Token;
 
-public class CMinusParserDemo
+public class CMinusSemanticsDemo
 {
     public static void main(String[] args)
     {
@@ -24,14 +23,19 @@ public class CMinusParserDemo
         {
             for ( int i = 0; i < args.length; i++ )
             {
-                CMinusParserDemo.run(args[i], SILENT);
+                if (i > 0)
+                {
+                    StdOut.println();
+                }
+
+                CMinusSemanticsDemo.run(args[i], SILENT);
             }
         }
         else // Allow user to select a file using a GUI.
         {
             String fileName = Support.getFilePath(null, true, !SILENT);
 
-            CMinusParserDemo.run(fileName, SILENT);
+            CMinusSemanticsDemo.run(fileName, SILENT);
         }
     }
 
@@ -49,12 +53,21 @@ public class CMinusParserDemo
         }
 
         // Create symbol tables.
-        SymTab<SymTabRec> symbolTables = new SymTab<SymTabRec>();
+        CMinusSemantics.SymTab<CMinusSemantics.SymTabRec> symbolTables = new CMinusSemantics.SymTab<CMinusSemantics.SymTabRec>();
 
         // Create an instance of the parser; pass the tokens and the symbol tables to it.
         CMinusParser parser = new CMinusParser(tokens, symbolTables, silent);
 
-        // Print the parser's results.
-        StdOut.println(parser.getResult());
+        if ( parser.getResult().contentEquals("ACCEPT") )
+        {
+            // Create an instance of the semantic analyzer; pass the tokens and the symbol tables to it.
+            CMinusSemantics semantics = new CMinusSemantics(tokens, symbolTables, silent);
+    
+            StdOut.println(semantics.getResult());
+        }
+        else
+        {
+            StdOut.println(parser.getResult());
+        }
     }
 }

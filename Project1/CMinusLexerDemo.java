@@ -21,6 +21,11 @@ public class CMinusLexerDemo
         {
             for ( int i = 0; i < args.length; i++ )
             {
+                if (i > 0)
+                {
+                    StdOut.println();
+                }
+                
                 CMinusLexerDemo.run(args[i], SILENT);
             }
         }
