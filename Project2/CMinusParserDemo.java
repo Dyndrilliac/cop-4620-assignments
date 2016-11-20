@@ -13,6 +13,7 @@ import api.util.cminus.CMinusParser;
 import api.util.cminus.CMinusSemantics.SymTab;
 import api.util.cminus.CMinusSemantics.SymTabRec;
 import api.util.datastructures.Token;
+import edu.princeton.cs.algs4.StdOut;
 
 public class CMinusParserDemo
 {

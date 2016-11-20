@@ -12,6 +12,7 @@ import api.util.cminus.CMinusLexer;
 import api.util.cminus.CMinusParser;
 import api.util.cminus.CMinusSemantics;
 import api.util.datastructures.Token;
+import edu.princeton.cs.algs4.StdOut;
 
 public class CMinusSemanticsDemo
 {
