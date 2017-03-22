@@ -10,10 +10,8 @@ import java.util.List;
 import api.util.Support;
 import api.util.cminus.CMinusLexer;
 import api.util.cminus.CMinusParser;
-import api.util.cminus.CMinusSemantics.SymTab;
-import api.util.cminus.CMinusSemantics.SymTabRec;
+import api.util.cminus.CMinusSemantics;
 import api.util.datastructures.Token;
-import edu.princeton.cs.algs4.StdOut;
 
 public class CMinusParserDemo
 {
@@ -50,7 +48,7 @@ public class CMinusParserDemo
         }
 
         // Create symbol tables.
-        SymTab<SymTabRec> symbolTables = new SymTab<SymTabRec>();
+        CMinusSemantics.SymTab<CMinusSemantics.SymTabRec> symbolTables = new CMinusSemantics.SymTab<CMinusSemantics.SymTabRec>();
 
         // Create an instance of the parser; pass the tokens and the symbol tables to it.
         CMinusParser parser = new CMinusParser(tokens, symbolTables, silent);
