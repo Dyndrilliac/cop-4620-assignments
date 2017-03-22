@@ -1,8 +1,8 @@
-/* A program to perform selection sort on a 10 element array of floats. */
+/* A program to perform selection sort on a 10 element array. */
 
-float x[10];
+int x[10];
 
-int minloc(float a[], int low, int high)
+int minloc(int a[], int low, int high)
 {
     int i; int x; int k;
 
@@ -24,14 +24,14 @@ int minloc(float a[], int low, int high)
     return k;
 }
 
-void sort(float a[], int low, int high)
+void sort(int a[], int low, int high)
 {
     int i; int k;
     i = low;
 
-    while (i < (high-1))
+    while (i < high-1)
     {
-        float t;
+        int t;
         k = minloc(a,i,high);
         t = a[k];
         a[k] = a[i];
@@ -46,16 +46,16 @@ void main(void)
     i = 0;
 
     while (i < 10)
-    {
+	{
         x[i] = input();
         i = i + 1;
     }
 
-    sort(x, 0, 10);
+    sort(x,0,10);
     i = 0;
 
     while (i < 10)
-    {
+	{
         output(x[i]);
         i = i + 1;
     }

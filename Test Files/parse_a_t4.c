@@ -1,4 +1,5 @@
 /* g_t29 */
+
 int main(int b)
 {
     int a;

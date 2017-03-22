@@ -1,4 +1,4 @@
-int square(int a)
+float square(float a)
 {
 	;
 }

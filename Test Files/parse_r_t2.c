@@ -1,4 +1,5 @@
 /* b_t35 */
+
 void main(int x)
 {
     int x;
