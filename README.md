@@ -17,16 +17,16 @@ This code makes use of my [Custom Java API](https://github.com/Dyndrilliac/java-
 
 The goal of this project is to produce a list of valid tokens to pass to the parser (Syntax Analyzer) in Project 2. In order to execute the program, the names of the files containing the text to be scanned must be fed to the program via command-line arguments. If you are GUI capable and not running in a terminal window, you can also just run the program without any arguments. You will then be prompted for a file path.
 
-Usage: **java -cp ".:stdlib.jar" CMinusLexerDemo _FileName1_ _FileName2_ ... _FileNameK_**
-Usage: **java -cp ".:stdlib.jar" CMinusLexerDemo**
+* Usage: **java -cp ".:stdlib.jar" CMinusLexerDemo _FileName1_ _FileName2_ ... _FileNameK_**
+* Usage: **java -cp ".:stdlib.jar" CMinusLexerDemo**
 
 ## File Listing
 
-CMinusLexerDemo.java: Class where the main method and program entry-point is located.
-CMinusLexer.java:     Class that represents the vast majority of the lexer logic.
-Lexer.java:           Class that provides the default Lexer interfaces.
-Token.java:           Class that provides a data structure for storing and accessing token data.
-Support.java:         Class that provides static utility support methods.
+* CMinusLexerDemo.java: **Class where the main method and program entry-point is located.**
+* CMinusLexer.java:     **Class that represents the vast majority of the lexer logic.**
+* Lexer.java:           **Class that provides the default Lexer interfaces.**
+* Token.java:           **Class that provides a data structure for storing and accessing token data.**
+* Support.java:         **Class that provides static utility support methods.**
 
 ## Design
 
@@ -34,7 +34,7 @@ The lexical analyzer opens the file, reads the text in line by line, strips comm
 
 ## Build Instructions
 
-Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusLexerDemo.java**
+* Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusLexerDemo.java**
 
 # Project 2 - Syntax Analyzer
 
@@ -43,18 +43,18 @@ Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLe
 
 The goal of this project is to verify that the list of tokens passed in from Project 1 are in a syntactically correct order. In order to execute the program, the names of the files containing the text to be scanned must be fed to the program via command-line arguments. If you are GUI capable and not running in a terminal window, you can also just run the program without any arguments. You will then be prompted for a file path.
 
-Usage: **java CMinusParserDemo _FileName1_ _FileName2_ ... _FileNameK_**
-Usage: **java CMinusParserDemo**
+* Usage: **java CMinusParserDemo _FileName1_ _FileName2_ ... _FileNameK_**
+* Usage: **java CMinusParserDemo**
 
 ## File Listing
 
-CMinusParserDemo.java: Class where the main method and program entry-point is located.
-CMinusSemantics.java:  Class that represents the vast majority of the semantic analyzer logic.
-CMinusParser.java:     Class that represents the vast majority of the parser logic.
-CMinusLexer.java:      Class that represents the vast majority of the lexer logic.
-Lexer.java:            Class that provides the default Lexer interfaces.
-Token.java:            Class that provides a data structure for storing and accessing token data.
-Support.java:          Class that provides static utility support methods.
+* CMinusParserDemo.java: **Class where the main method and program entry-point is located.**
+* CMinusSemantics.java:  **Class that represents the vast majority of the semantic analyzer logic.**
+* CMinusParser.java:     **Class that represents the vast majority of the parser logic.**
+* CMinusLexer.java:      **Class that represents the vast majority of the lexer logic.**
+* Lexer.java:            **Class that provides the default Lexer interfaces.**
+* Token.java:            **Class that provides a data structure for storing and accessing token data.**
+* Support.java:          **Class that provides static utility support methods.**
 
 ## Design
 
@@ -62,7 +62,7 @@ This class functions as a generic syntactical analyzer for the C-Minus language.
 
 ## Build Instructions
 
-Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusParser.java CMinusSemantics.java CMinusParserDemo.java**
+* Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusParser.java CMinusSemantics.java CMinusParserDemo.java**
 
 # Project 3 - Semantic Analyzer
 
