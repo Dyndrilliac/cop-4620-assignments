@@ -36,7 +36,7 @@ The lexical analyzer opens the file, reads the text in line by line, strips comm
 
 * Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusLexerDemo.java**
 
-# Project 2 - Syntax Analyzer
+# Project 2 - Syntactical Analyzer
 
 * Due:       03/02/2017
 * Submitted: 03/02/2017
