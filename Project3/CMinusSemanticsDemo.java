@@ -24,6 +24,9 @@ public class CMinusSemanticsDemo
         {
             for ( int i = 0; i < args.length; i++ )
             {
+                CMinusSemantics.errorFlag = false;
+                CMinusSemantics.seenMain  = false;
+
                 CMinusSemanticsDemo.run(args[i], SILENT);
             }
         }
