@@ -24,11 +24,6 @@ public class CMinusSemanticsDemo
         {
             for ( int i = 0; i < args.length; i++ )
             {
-                if (i > 0)
-                {
-                    StdOut.println();
-                }
-
                 CMinusSemanticsDemo.run(args[i], SILENT);
             }
         }
@@ -63,7 +58,7 @@ public class CMinusSemanticsDemo
         {
             // Create an instance of the semantic analyzer; pass the tokens and the symbol tables to it.
             CMinusSemantics semantics = new CMinusSemantics(tokens, symbolTables, silent);
-    
+
             StdOut.println(semantics.getResult());
         }
         else
