@@ -4,5 +4,6 @@ void main(void) /* g nested */
    {
       int x;
    }
-   return x;
+   x=x+1;
+   return;
 }
