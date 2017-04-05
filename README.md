@@ -118,7 +118,7 @@ TODO
 
 ## Build Instructions
 
-* Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusParser.java CMinusSemantics.java CMinusSemanticsDemo.java**
+* Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusParser.java CMinusSemantics.java CMinusCodeGenDemo.java**
 
 # Project 5 - YACC/Lex
 
