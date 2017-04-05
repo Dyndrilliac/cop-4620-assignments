@@ -122,4 +122,21 @@ TODO
 
 # Project 5 - YACC/Lex
 
+* Due:       04/20/2017
+* Submitted: 04/20/2017
+
 TODO
+
+* Usage: **TODO**
+
+## File Listing
+
+* TODO
+
+## Design
+
+TODO
+
+## Build Instructions
+
+* Usage: **TODO**
