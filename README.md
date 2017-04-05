@@ -66,8 +66,8 @@ This class functions as a generic syntactical analyzer for the C-Minus language.
 
 # Project 3 - Semantic Analyzer
 
-* Due:       03/30/2017
-* Submitted: 03/30/2017
+* Due:       04/04/2017
+* Submitted: 04/04/2017
 
 The goal of this project is to verify that the list of tokens passed in from Project 1 are in a semantically correct order. In order to execute the program, the names of the files containing the text to be scanned must be fed to the program via command-line arguments. If you are GUI capable and not running in a terminal window, you can also just run the program without any arguments. You will then be prompted for a file path.
 
@@ -94,7 +94,31 @@ This class functions as a generic semantic analyzer for the C-Minus language. It
 
 # Project 4 - Code Generation
 
+* Due:       04/12/2017
+* Submitted: 04/12/2017
+
+The goal of this project is to generate the intermediate assembler code. In order to execute the program, the names of the files containing the text to be scanned must be fed to the program via command-line arguments. If you are GUI capable and not running in a terminal window, you can also just run the program without any arguments. You will then be prompted for a file path.
+
+* Usage: **java -cp ".:stdlib.jar" CMinusCodeGenDemo _FileName1_ _FileName2_ ... _FileNameK_**
+* Usage: **java -cp ".:stdlib.jar" CMinusCodeGenDemo**
+
+## File Listing
+
+* CMinusCodeGenDemo.java:   **Class where the main method and program entry-point is located.**
+* CMinusSemantics.java:     **Class that represents the vast majority of the semantic analyzer logic.**
+* CMinusParser.java:        **Class that represents the vast majority of the parser logic.**
+* CMinusLexer.java:         **Class that represents the vast majority of the lexer logic.**
+* Lexer.java:               **Class that provides the default Lexer interfaces.**
+* Token.java:               **Class that provides a data structure for storing and accessing token data.**
+* Support.java:             **Class that provides static utility support methods.**
+
+## Design
+
 TODO
+
+## Build Instructions
+
+* Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusParser.java CMinusSemantics.java CMinusSemanticsDemo.java**
 
 # Project 5 - YACC/Lex
 
