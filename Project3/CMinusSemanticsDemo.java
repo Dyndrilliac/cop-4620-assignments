@@ -1,9 +1,9 @@
 /*
- * Title: CMinusParserDemo
+ * Title: CMinusSemanticsDemo
  * Author: Matthew Boyette
- * Date: 11/08/2016
+ * Date: 11/08/2016 - 04/04/2017
  * 
- * This is a test program demonstrating a syntactical analyzer class for the C-Minus language.
+ * This is a test program demonstrating a semantic analyzer class for the C-Minus language.
  */
 
 import java.util.List;
@@ -12,7 +12,6 @@ import api.util.cminus.CMinusLexer;
 import api.util.cminus.CMinusParser;
 import api.util.cminus.CMinusSemantics;
 import api.util.datastructures.Token;
-import edu.princeton.cs.algs4.StdOut;
 
 public class CMinusSemanticsDemo
 {
@@ -24,8 +23,10 @@ public class CMinusSemanticsDemo
         {
             for ( int i = 0; i < args.length; i++ )
             {
-                CMinusSemantics.errorFlag = false;
-                CMinusSemantics.seenMain  = false;
+                if ( i > 0 )
+                {
+                    CMinusSemantics.reinitialize();
+                }
 
                 CMinusSemanticsDemo.run(args[i], SILENT);
             }
