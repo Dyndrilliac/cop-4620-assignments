@@ -92,7 +92,7 @@ This class functions as a generic semantic analyzer for the C-Minus language. It
 
 * Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusParser.java CMinusSemantics.java CMinusSemanticsDemo.java**
 
-# Project 4 - Code Generation
+# Project 4 - Code Generator
 
 * Due:       04/12/2017
 * Submitted: 04/12/2017
