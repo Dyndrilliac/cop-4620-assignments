@@ -94,8 +94,8 @@ This class functions as a generic semantic analyzer for the C-Minus language. It
 
 # Project 4 - Code Generator
 
-* Due:       04/12/2017
-* Submitted: 04/12/2017
+* Due:       04/13/2017
+* Submitted: 04/13/2017
 
 The goal of this project is to generate the intermediate assembler code. In order to execute the program, the names of the files containing the text to be scanned must be fed to the program via command-line arguments. If you are GUI capable and not running in a terminal window, you can also just run the program without any arguments. You will then be prompted for a file path.
 
@@ -104,13 +104,14 @@ The goal of this project is to generate the intermediate assembler code. In orde
 
 ## File Listing
 
-* CMinusCodeGenDemo.java:   **Class where the main method and program entry-point is located.**
-* CMinusSemantics.java:     **Class that represents the vast majority of the semantic analyzer logic.**
-* CMinusParser.java:        **Class that represents the vast majority of the parser logic.**
-* CMinusLexer.java:         **Class that represents the vast majority of the lexer logic.**
-* Lexer.java:               **Class that provides the default Lexer interfaces.**
-* Token.java:               **Class that provides a data structure for storing and accessing token data.**
-* Support.java:             **Class that provides static utility support methods.**
+* CMinusCodeGenDemo.java:    **Class where the main method and program entry-point is located.**
+* CMinusCodeGeneration.java: **Class that represents the vast majority of the code generator logic.**
+* CMinusSemantics.java:      **Class that represents the vast majority of the semantic analyzer logic.**
+* CMinusParser.java:         **Class that represents the vast majority of the parser logic.**
+* CMinusLexer.java:          **Class that represents the vast majority of the lexer logic.**
+* Lexer.java:                **Class that provides the default Lexer interfaces.**
+* Token.java:                **Class that provides a data structure for storing and accessing token data.**
+* Support.java:              **Class that provides static utility support methods.**
 
 ## Design
 
@@ -118,7 +119,7 @@ TODO
 
 ## Build Instructions
 
-* Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusParser.java CMinusSemantics.java CMinusCodeGenDemo.java**
+* Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusParser.java CMinusSemantics.java CMinusCodeGeneration.java CMinusCodeGenDemo.java**
 
 # Project 5 - YACC/Lex
 
