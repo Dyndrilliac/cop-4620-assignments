@@ -23,11 +23,6 @@ public class CMinusSemanticsDemo
         {
             for ( int i = 0; i < args.length; i++ )
             {
-                if ( i > 0 )
-                {
-                    CMinusSemantics.reinitialize();
-                }
-
                 CMinusSemanticsDemo.run(args[i], SILENT);
             }
         }
