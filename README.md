@@ -115,7 +115,7 @@ The goal of this project is to generate the intermediate assembler code. In orde
 
 ## Design
 
-TODO
+This project attempts to make minimal modifications to the code previously submitted for Porjects 2 and 3 in order to implement the output of intermediate code.
 
 ## Build Instructions
 
@@ -126,18 +126,20 @@ TODO
 * Due:       04/20/2017
 * Submitted: 04/20/2017
 
-TODO
+This project is a lexer/parser combo for a SQL grammar.
 
-* Usage: **TODO**
+* Usage: **p5 < _FileName_**
 
 ## File Listing
 
-* TODO
+* makefile: **This file contains the commands to compile the project.**
+* p5.l:     **This is the input file for LEX/FLEX.**
+* p5.y:     **This is the inpur file for YACC/BISON.**
 
 ## Design
 
-TODO
+This project uses LEX/FLEX and YACC/BISON to lex and parse a file containing SQL commands.
 
 ## Build Instructions
 
-* Usage: **TODO**
+* Usage: **make**

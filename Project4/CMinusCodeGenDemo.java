@@ -1,7 +1,7 @@
 /*
  * Title: CMinusCodeGenDemo
  * Author: Matthew Boyette
- * Date: 04/10/2017
+ * Date: 04/10/2017 - 04/14/2017
  * 
  * This is a test program demonstrating an intermediate code generator class for the C-Minus language.
  */
@@ -68,11 +68,13 @@ public class CMinusCodeGenDemo
             else
             {
                 StdOut.println(semantics.getResult());
+                CMinusCodeGeneration.reinitialize();
             }
         }
         else
         {
             StdOut.println(parser.getResult());
+            CMinusSemantics.reinitialize();
         }
     }
 }

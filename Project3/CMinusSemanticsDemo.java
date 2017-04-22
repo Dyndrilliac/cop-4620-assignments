@@ -1,7 +1,7 @@
 /*
  * Title: CMinusSemanticsDemo
  * Author: Matthew Boyette
- * Date: 11/08/2016 - 04/04/2017
+ * Date: 11/08/2016 - 04/13/2017
  * 
  * This is a test program demonstrating a semantic analyzer class for the C-Minus language.
  */
@@ -63,6 +63,7 @@ public class CMinusSemanticsDemo
         else
         {
             StdOut.println(parser.getResult());
+            CMinusSemantics.reinitialize();
         }
     }
 }
