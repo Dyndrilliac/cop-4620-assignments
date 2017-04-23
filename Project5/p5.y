@@ -5,7 +5,7 @@ extern int  yylex();
 extern void yyerror(const char *s);
 %}
 %start Start
-%token Number Ren As Whe Cma Rsb Lsb Rp Lp BinaryOperation Compare Attribute Relation
+%token Number BinaryOperation Compare Attribute Relation Rename As Where
 %%
 Start                 : Expression
                       ;
@@ -16,18 +16,18 @@ OneRelationExpression : Renaming
                       | Restriction
                       | Projection
                       ;
-Renaming              : Term Ren Attribute As Attribute
+Renaming              : Term Rename Attribute As Attribute
                       ;
 Term                  : Relation
-                      | Lp Expression Rp
+                      | '(' Expression ')'
                       ;
-Restriction           : Term Whe Comparison
+Restriction           : Term Where Comparison
                       ;
 Projection            : Term
-                      | Term Lsb AttributeCommalist Rsb
+                      | Term '[' AttributeCommalist ']'
                       ;
 AttributeCommalist    : Attribute
-                      | Attribute Cma AttributeCommalist
+                      | Attribute ',' AttributeCommalist
                       ;
 TwoRelationExpression : Projection BinaryOperation Expression
                       ;

@@ -16,12 +16,7 @@ Relation        S|P|SP|PRDCT|CUST|ORDERS
 {Compare}         return Compare;
 {Attribute}       return Attribute;
 {Relation}        return Relation;
-"RENAME"          return Ren;
+"RENAME"          return Rename;
 "AS"              return As;
-"WHERE"           return Whe;
-","               return Cma;
-"]"               return Rsb;
-"["               return Lsb;
-")"               return Rp;
-"("               return Lp;
+"WHERE"           return Where;
 %%
