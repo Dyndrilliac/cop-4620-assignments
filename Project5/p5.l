@@ -7,7 +7,7 @@ WhiteSpace  {Delimiter}+
 Digit       [0-9]
 %%
 {WhiteSpace}                ;
-{Digit}+					return(Number);
+{Digit}+                    return(Number);
 "S"                         return(S);
 "P"                         return(P);
 "SP"                        return(SP);

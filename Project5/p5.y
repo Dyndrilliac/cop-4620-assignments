@@ -13,7 +13,6 @@ extern void yyerror(const char *s);
 %token COLOR WEIGHT QTY   Number
 %%
 Start                   : Expression                            {
-                                                                    printf("ACCEPT\n");
                                                                 };
 Expression              : OneRelationExpression                 {
                                                                 };
@@ -70,7 +69,7 @@ Compare                 : LtC                                   {
                         | NeC                                   {
                                                                 };
 Attribute               : CNO                                   {
-																};
+                                                                };
                         | CITY                                  {
                                                                 };
                         | CNAME                                 {
@@ -119,10 +118,11 @@ Relation                : S                                     {
 int main()
 {
    yyparse();
+   fprintf(stdout, "ACCEPT\n");
 }
 void yyerror(const char *s)
 {
-   printf("REJECT\n");
+   fprintf(stdout, "REJECT\n");
    exit(0);
 }
 int yywrap()
