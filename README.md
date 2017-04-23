@@ -134,7 +134,7 @@ This project is a lexer/parser combo for a SQL grammar.
 
 * makefile: **This file contains the commands to compile the project.**
 * p5.l:     **This is the input file for LEX/FLEX.**
-* p5.y:     **This is the inpur file for YACC/BISON.**
+* p5.y:     **This is the input file for YACC/BISON.**
 
 ## Design
 
