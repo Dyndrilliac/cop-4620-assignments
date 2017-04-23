@@ -1,6 +1,5 @@
 %{
 #include "p5.tab.h"
-extern int yylval;
 %}
 Delimiter       [ \t\n]
 WhiteSpace      {Delimiter}+
@@ -12,17 +11,17 @@ Attribute       CNO|CITY|CNAME|SNO|PNO|TQTY|SNAME|QUOTA|PNAME|COST|AVQTY|S#|STAT
 Relation        S|P|SP|PRDCT|CUST|ORDERS
 %%
 {WhiteSpace}      ;
-{Digit}           return(Number);
-"RENAME"          return(Ren);
-"AS"              return(As);
-"WHERE"           return(Whe);
-","               return(Cma);
-"]"               return(Rsb);
-"["               return(Lsb);
-")"               return(Rp);
-"("               return(Lp);
-{BinaryOperation} return(BinaryOperation);
-{Compare}         return(Compare);
-{Attribute}       return(Attribute);
-{Relation}        return(Relation);
+{Number}          return Number;
+{BinaryOperation} return BinaryOperation;
+{Compare}         return Compare;
+{Attribute}       return Attribute;
+{Relation}        return Relation;
+"RENAME"          return Ren;
+"AS"              return As;
+"WHERE"           return Whe;
+","               return Cma;
+"]"               return Rsb;
+"["               return Lsb;
+")"               return Rp;
+"("               return Lp;
 %%
