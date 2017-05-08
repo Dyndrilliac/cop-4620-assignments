@@ -66,8 +66,6 @@ This class functions as a generic syntactical analyzer for the C-Minus language.
 
 # Project 3 - Semantic Analyzer
 
-* Due:       04/04/2017
-* Submitted: 04/04/2017
 
 The goal of this project is to verify that the list of tokens passed in from Project 1 are in a semantically correct order. In order to execute the program, the names of the files containing the text to be scanned must be fed to the program via command-line arguments. If you are GUI capable and not running in a terminal window, you can also just run the program without any arguments. You will then be prompted for a file path.
 
