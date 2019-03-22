@@ -1,3 +1,5 @@
+package Project4;
+
 /*
  * Title: CMinusCodeGenDemo
  * Author: Matthew Boyette
@@ -13,6 +15,7 @@ import api.util.cminus.CMinusLexer;
 import api.util.cminus.CMinusParser;
 import api.util.cminus.CMinusSemantics;
 import api.util.datastructures.Token;
+import edu.princeton.cs.introcs.StdOut;
 
 public class CMinusCodeGenDemo
 {

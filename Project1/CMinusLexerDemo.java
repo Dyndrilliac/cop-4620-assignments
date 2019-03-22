@@ -1,3 +1,5 @@
+package Project1;
+
 /*
  * Title: CMinusLexerDemo
  * Author: Matthew Boyette
@@ -10,7 +12,7 @@ import java.util.List;
 import api.util.Support;
 import api.util.cminus.CMinusLexer;
 import api.util.datastructures.Token;
-import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.introcs.StdOut;
 
 public class CMinusLexerDemo
 {

@@ -1,3 +1,5 @@
+package Project2;
+
 /*
  * Title: CMinusParserDemo
  * Author: Matthew Boyette
@@ -12,6 +14,7 @@ import api.util.cminus.CMinusLexer;
 import api.util.cminus.CMinusParser;
 import api.util.cminus.CMinusSemantics;
 import api.util.datastructures.Token;
+import edu.princeton.cs.introcs.StdOut;
 
 public class CMinusParserDemo
 {
@@ -34,8 +37,10 @@ public class CMinusParserDemo
         }
     }
 
-    public static void run(final String fileName, final boolean silent)
+    public static String run(final String fileName, final boolean silent)
     {
+        String result = null;
+
         // Create an instance of the lexical analyzer.
         CMinusLexer<CMinusLexer.TokenType> lexer = new CMinusLexer<CMinusLexer.TokenType>();
 
@@ -54,6 +59,8 @@ public class CMinusParserDemo
         CMinusParser parser = new CMinusParser(tokens, symbolTables, silent);
 
         // Print the parser's results.
-        StdOut.println(parser.getResult());
+        result = parser.getResult();
+        StdOut.println(result);
+        return result;
     }
 }
