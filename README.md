@@ -17,12 +17,15 @@ This code makes use of my [Custom Java API](https://github.com/Dyndrilliac/java-
 
 The goal of this project is to produce a list of valid tokens to pass to the parser (Syntax Analyzer) in Project 2. In order to execute the program, the names of the files containing the text to be scanned must be fed to the program via command-line arguments. If you are GUI capable and not running in a terminal window, you can also just run the program without any arguments. You will then be prompted for a file path.
 
-* Usage: **java -cp ".:stdlib.jar" CMinusLexerDemo _FileName1_ _FileName2_ ... _FileNameK_**
-* Usage: **java -cp ".:stdlib.jar" CMinusLexerDemo**
+## Usage Examples
+
+* `./Binaries/P1.jar './Test Files/lex_t1.txt'`
+* `java -jar ./Binaries/P1.jar './Test Files/lex_t1.txt'`
+* `java -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" Project1.CMinusLexerDemo './Test Files/lex_t1.txt'` (**NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.)
 
 ## File Listing
 
-* CMinusLexerDemo.java: **Class where the main method and program entry-point is located.**
+* CMinusLexerDemo.java: **Class where the main method and program entry-point are located.**
 * CMinusLexer.java:     **Class that represents the vast majority of the lexer logic.**
 * Lexer.java:           **Class that provides the default Lexer interfaces.**
 * Token.java:           **Class that provides a data structure for storing and accessing token data.**
@@ -30,11 +33,13 @@ The goal of this project is to produce a list of valid tokens to pass to the par
 
 ## Design
 
-The lexical analyzer opens the file, reads the text in line by line, strips comments/whitespace, and feeds each piece of input to Java's Regular Expression engine to match tokens with their lexemes using RegExr patterns.
+The lexical analyzer opens the file, reads the text in line by line, strips comments/whitespace, and feeds each piece of input to Java's Regular Expression engine to match tokens with their lexemes using RegEx patterns.
 
 ## Build Instructions
 
-* Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusLexerDemo.java**
+* ``javac -g -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" ./Project1/CMinusLexerDemo.java``
+
+Note that your environment variables will likely be different. What's important is that you have the path to [stdlib.jar](https://introcs.cs.princeton.edu/java/stdlib/) and my [Custom Java API](https://github.com/Dyndrilliac/java-custom-api) in your classpath.
 
 # Project 2 - Syntactical Analyzer
 
@@ -43,8 +48,11 @@ The lexical analyzer opens the file, reads the text in line by line, strips comm
 
 The goal of this project is to verify that the list of tokens passed in from Project 1 are in a syntactically correct order. In order to execute the program, the names of the files containing the text to be scanned must be fed to the program via command-line arguments. If you are GUI capable and not running in a terminal window, you can also just run the program without any arguments. You will then be prompted for a file path.
 
-* Usage: **java -cp ".:stdlib.jar" CMinusParserDemo _FileName1_ _FileName2_ ... _FileNameK_**
-* Usage: **java -cp ".:stdlib.jar" CMinusParserDemo**
+## Usage Examples
+
+* `./Binaries/P2.jar './Test Files/parse_a_t1.c'`
+* `java -jar ./Binaries/P2.jar './Test Files/parse_a_t1.c'`
+* `java -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" Project2.CMinusParserDemo './Test Files/parse_a_t1.c'` (**NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.)
 
 ## File Listing
 
@@ -62,7 +70,9 @@ This class functions as a generic syntactical analyzer for the C-Minus language.
 
 ## Build Instructions
 
-* Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusParser.java CMinusSemantics.java CMinusParserDemo.java**
+* ``javac -g -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" ./Project2/CMinusParserDemo.java``
+
+Note that your environment variables will likely be different. What's important is that you have the path to [stdlib.jar](https://introcs.cs.princeton.edu/java/stdlib/) and my [Custom Java API](https://github.com/Dyndrilliac/java-custom-api) in your classpath.
 
 # Project 3 - Semantic Analyzer
 
@@ -71,8 +81,11 @@ This class functions as a generic syntactical analyzer for the C-Minus language.
 
 The goal of this project is to verify that the list of tokens passed in from Project 1 are in a semantically correct order. In order to execute the program, the names of the files containing the text to be scanned must be fed to the program via command-line arguments. If you are GUI capable and not running in a terminal window, you can also just run the program without any arguments. You will then be prompted for a file path.
 
-* Usage: **java -cp ".:stdlib.jar" CMinusSemanticsDemo _FileName1_ _FileName2_ ... _FileNameK_**
-* Usage: **java -cp ".:stdlib.jar" CMinusSemanticsDemo**
+## Usage Examples
+
+* `./Binaries/P3.jar './Test Files/seman_a_t01.c'`
+* `java -jar ./Binaries/P3.jar './Test Files/seman_a_t01.c'`
+* `java -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" Project3.CMinusSemanticsDemo './Test Files/seman_a_t01.c'` (**NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.)
 
 ## File Listing
 
@@ -90,7 +103,9 @@ This class functions as a generic semantic analyzer for the C-Minus language. It
 
 ## Build Instructions
 
-* Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusParser.java CMinusSemantics.java CMinusSemanticsDemo.java**
+* ``javac -g -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" ./Project3/CMinusSemanticsDemo.java``
+
+Note that your environment variables will likely be different. What's important is that you have the path to [stdlib.jar](https://introcs.cs.princeton.edu/java/stdlib/) and my [Custom Java API](https://github.com/Dyndrilliac/java-custom-api) in your classpath.
 
 # Project 4 - Code Generator
 
@@ -99,8 +114,11 @@ This class functions as a generic semantic analyzer for the C-Minus language. It
 
 The goal of this project is to generate the intermediate assembler code. In order to execute the program, the names of the files containing the text to be scanned must be fed to the program via command-line arguments. If you are GUI capable and not running in a terminal window, you can also just run the program without any arguments. You will then be prompted for a file path.
 
-* Usage: **java -cp ".:stdlib.jar" CMinusCodeGenDemo _FileName1_ _FileName2_ ... _FileNameK_**
-* Usage: **java -cp ".:stdlib.jar" CMinusCodeGenDemo**
+## Usage Examples
+
+* `./Binaries/P4.jar './Test Files/code_t1.c'`
+* `java -jar ./Binaries/P4.jar './Test Files/code_t1.c'`
+* `java -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" Project4.CMinusCodeGenDemo './Test Files/code_t1.c'` (**NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.)
 
 ## File Listing
 
@@ -119,7 +137,7 @@ This project attempts to make minimal modifications to the code previously submi
 
 ## Build Instructions
 
-* Usage: **javac -g -cp ".:stdlib.jar" Support.java Token.java Lexer.java CMinusLexer.java CMinusParser.java CMinusSemantics.java CMinusCodeGeneration.java CMinusCodeGenDemo.java**
+* ``javac -g -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" ./Project4/CMinusCodeGenDemo.java``
 
 # Project 5 - YACC/Lex
 
@@ -128,7 +146,10 @@ This project attempts to make minimal modifications to the code previously submi
 
 This project is a lexer/parser combo for a SQL grammar.
 
-* Usage: **p5 < _FileName_**
+## Usage Examples
+
+* ``./Binaries/P5.out < './Test Files/sql_a_t1.txt'``
+* ``./Project5/P5.out < './Test Files/sql_a_t1.txt'`` (**NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.)
 
 ## File Listing
 
@@ -142,4 +163,8 @@ This project uses LEX/FLEX and YACC/BISON to lex and parse a file containing SQL
 
 ## Build Instructions
 
-* Usage: **make**
+* ``make -C ./Project5``
+
+You can also remove the files automatically generated by the compilation process using the following command:
+
+* ``make -C ./Project5 clean``
