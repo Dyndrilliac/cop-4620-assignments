@@ -19,9 +19,10 @@ The goal of this project is to produce a list of valid tokens to pass to the par
 
 ## Usage Examples
 
-* `./Binaries/P1.jar './Test Files/lex_t1.txt'`
-* `java -jar ./Binaries/P1.jar './Test Files/lex_t1.txt'`
-* `java -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" Project1.CMinusLexerDemo './Test Files/lex_t1.txt'` (**NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.)
+* ``./Binaries/P1.jar './Test Files/lex_t1.txt'``
+* ``java -jar ./Binaries/P1.jar './Test Files/lex_t1.txt'``
+* ``java -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" Project1.CMinusLexerDemo './Test Files/lex_t1.txt'``
+	* **NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.
 
 ## File Listing
 
@@ -50,9 +51,10 @@ The goal of this project is to verify that the list of tokens passed in from Pro
 
 ## Usage Examples
 
-* `./Binaries/P2.jar './Test Files/parse_a_t1.c'`
-* `java -jar ./Binaries/P2.jar './Test Files/parse_a_t1.c'`
-* `java -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" Project2.CMinusParserDemo './Test Files/parse_a_t1.c'` (**NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.)
+* ``./Binaries/P2.jar './Test Files/parse_a_t1.c'``
+* ``java -jar ./Binaries/P2.jar './Test Files/parse_a_t1.c'``
+* ``java -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" Project2.CMinusParserDemo './Test Files/parse_a_t1.c'``
+	* **NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.
 
 ## File Listing
 
@@ -83,9 +85,10 @@ The goal of this project is to verify that the list of tokens passed in from Pro
 
 ## Usage Examples
 
-* `./Binaries/P3.jar './Test Files/seman_a_t01.c'`
-* `java -jar ./Binaries/P3.jar './Test Files/seman_a_t01.c'`
-* `java -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" Project3.CMinusSemanticsDemo './Test Files/seman_a_t01.c'` (**NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.)
+* ``./Binaries/P3.jar './Test Files/seman_a_t01.c'``
+* ``java -jar ./Binaries/P3.jar './Test Files/seman_a_t01.c'``
+* ``java -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" Project3.CMinusSemanticsDemo './Test Files/seman_a_t01.c'``
+	* **NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.
 
 ## File Listing
 
@@ -116,9 +119,10 @@ The goal of this project is to generate the intermediate assembler code. In orde
 
 ## Usage Examples
 
-* `./Binaries/P4.jar './Test Files/code_t1.c'`
-* `java -jar ./Binaries/P4.jar './Test Files/code_t1.c'`
-* `java -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" Project4.CMinusCodeGenDemo './Test Files/code_t1.c'` (**NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.)
+* ``./Binaries/P4.jar './Test Files/code_t1.c'``
+* ``java -jar ./Binaries/P4.jar './Test Files/code_t1.c'``
+* ``java -cp ".:$GITHUB/java-custom-api:$JAVA_LIBS/stdlib.jar:$CLASSPATH" Project4.CMinusCodeGenDemo './Test Files/code_t1.c'``
+	* **NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.
 
 ## File Listing
 
@@ -149,7 +153,8 @@ This project is a lexer/parser combo for a SQL grammar.
 ## Usage Examples
 
 * ``./Binaries/P5.out < './Test Files/sql_a_t1.txt'``
-* ``./Project5/P5.out < './Test Files/sql_a_t1.txt'`` (**NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.)
+* ``./Project5/P5.out < './Test Files/sql_a_t1.txt'``
+	* **NOTE**: This usage requires compilation before it will work! See the _Build Instructions_ section below.
 
 ## File Listing
 
